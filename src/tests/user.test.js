@@ -38,7 +38,7 @@ test('GET /users', async() => {
         .get('/users')
         .set('Authorization', `Bearer ${ token }`);
     expect(res.status).toBe(200);
-    expect(res.body).toHaveLength(1);
+    expect(res.body).toHaveLength(2);
 });
 
 test('PUT /users/:id', async () => {

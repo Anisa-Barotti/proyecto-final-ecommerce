@@ -28,7 +28,7 @@ test('POST /products should create a products' , async () => {
     const res = await request(app)
         .post('/products')
         .send(product)
-        .set('Authorization', `Bearer ${token}`);
+        .set('Authorization', `Bearer ${ token }`);
     productsId = res.body.id;
     await category.destroy();
     expect(res.status).toBe(201);
@@ -66,7 +66,8 @@ test('POST /products/:id/images should set the products images', async () => {
     })
     const res = await request(app)
         .post(`/products/${productsId}/images`)  
-        .send([image.id]);
+        .send([image.id])
+        .set('Authorization', `Bearer ${ token }`);
     await image.destroy();
     expect(res.status).toBe(200);
     expect(res.body).toHaveLength(1);
